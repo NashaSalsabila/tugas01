@@ -69,6 +69,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void doProcess() {
+        if (isValid()) {
+            String nama = etnama.getText().toString();
+            tvh1.setText("Nama Anda : " + nama);
+        }
+    }
+
+    private boolean isValid() {
+        boolean valid = true;
+        String nama = etnama.getText().toString();
+
+        if (nama.isEmpty()) {
+            etnama.setError("Nama anda belum diisi");
+            valid = false;
+        } else if (nama.length() < 3) {
+            etnama.setError("Nama Minimal 3 karakter");
+            valid = false;
+        } else {
+            etnama.setError(null);
+        }
+        return valid;
+
 
     }
 }
