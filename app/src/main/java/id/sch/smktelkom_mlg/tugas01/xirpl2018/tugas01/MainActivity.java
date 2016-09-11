@@ -34,7 +34,41 @@ public class MainActivity extends AppCompatActivity {
         tvh4 = (TextView) findViewById(R.id.h4);
         spin = (Spinner) findViewById(R.id.spin);
 
+        bok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                doProcess();
+                doClick();
+            }
+        });
 
+    }
+
+    private void doClick() {
+        String hasil = null;
+        if (rdjk.getCheckedRadioButtonId() != -1) {
+            RadioButton rb = (RadioButton)
+                    findViewById(rdjk.getCheckedRadioButtonId());
+            hasil = rb.getText().toString();
+        }
+        if (hasil == null) {
+            tvh2.setText("Belum Memilih");
+        } else {
+            tvh2.setText("Gender Anda : " + hasil);
+        }
+        tvh3.setText("Kelas :" + spin.getSelectedItem().toString());
+
+        String hasil4 = "Ekstrakulikuler: \n";
+        int startlen = hasil4.length();
+        if (pramuka.isChecked()) hasil4 += pramuka.getText() + "\n";
+        if(fo.isChecked()) hasil4 += fo.getText() + "\n";
+        if(bta.isChecked()) hasil4 += bta.getText() + "\n";
+
+        if (hasil.length() == startlen) hasil4 += "Belum Memilih";
+        tvh4.setText(hasil4);
+    }
+
+    private void doProcess() {
 
     }
 }
